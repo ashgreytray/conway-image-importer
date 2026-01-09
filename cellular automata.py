@@ -2,6 +2,7 @@ import pygame
 import numpy as np
 from PIL import Image
 import time
+import easygui
 # h/w & tick swpeed
 GRID_SIZE = 100
 CELL_SIZE = 4
@@ -21,6 +22,9 @@ GRID = (40, 40, 40)
 UI_BG = (30, 30, 30)
 UI_FG = (200, 200, 200)
 running = False
+image_types = ["*.png", "*.jpg", "*.jpeg"]  # define the allowed types
+imagePath = easygui.fileopenbox(msg="Select Image", title="Image", default="*.png;*.jpg", filetypes=image_types)
+
 
 # image to gol
 def image_to_grid(path):
@@ -32,8 +36,8 @@ def image_to_grid(path):
     cutoff = np.quantile(px, 0.5)
     return (px < cutoff).astype(np.uint8)
 
-grid = image_to_grid("input.png") #same folder
-
+if imagePath:  # make sure the user didn't cancel
+    grid = image_to_grid(imagePath)
 # conway's logic
 def step(a):
     n = sum(
@@ -119,4 +123,5 @@ while True:
         last_update = now
 
     draw()
+
 
