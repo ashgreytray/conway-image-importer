@@ -30,7 +30,7 @@ imagePath = easygui.fileopenbox(
 )
 
 
-# image to gol
+# image to game of life 
 def image_to_grid(path):
     img = Image.open(path).convert("L")
     img = img.resize((GRID_SIZE, GRID_SIZE), Image.BILINEAR)
@@ -127,5 +127,6 @@ while True:
         last_update = now
 
     draw()
+
 
 
