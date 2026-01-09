@@ -22,8 +22,12 @@ GRID = (40, 40, 40)
 UI_BG = (30, 30, 30)
 UI_FG = (200, 200, 200)
 running = False
-image_types = ["*.png", "*.jpg", "*.jpeg"]  # define the allowed types
-imagePath = easygui.fileopenbox(msg="Select Image", title="Image", default="*.png;*.jpg", filetypes=image_types)
+image_types = ["*.png", "*.jpg", "*.jpeg"]  
+imagePath = easygui.fileopenbox(
+    msg="Select Image",
+    title="Open an image",
+    filetypes=image_types
+)
 
 
 # image to gol
